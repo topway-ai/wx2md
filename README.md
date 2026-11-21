@@ -29,6 +29,16 @@ python3 wx2md.py https://mp.weixin.qq.com/s/xxxx -
 chmod +x wx2md.py && sudo mv wx2md.py /usr/local/bin/wx2md
 ```
 
+## 让 AI 帮你读公众号文章
+
+把 `wx2md.py` 放进项目目录，然后跟 Claude Code、Codex 这类能跑命令的 AI 说：
+
+```
+用 python3 wx2md.py 把这篇转成 Markdown，再帮我总结要点：https://mp.weixin.qq.com/s/xxxx
+```
+
+也可以接进自己的 Telegram / 微信机器人：收到公众号链接就调用它，拿到正文再交给模型提炼。
+
 ## 原理
 
 公开文章的页面直接用 HTTP 请求就能拿到，正文在 `#js_content` 里；图片消息的正文在页面 JS 变量
@@ -39,4 +49,8 @@ chmod +x wx2md.py && sudo mv wx2md.py /usr/local/bin/wx2md
 - 只能转你手上有链接的公开文章，不能列出一个号的全部历史文章
 - 请求太频繁，或者服务器在海外，可能被微信要求验证；这时工具会报"拿不到正文"
 - 极简容器里中文显示乱码时，先 `export LANG=C.UTF-8`
-- 文章版权归原作者所有，请仅作个人阅读和存档
+- 文章版权归原作者所有，请仅作个人阅读和存档，不要用来批量抓取或转载
+
+## License
+
+[MIT](LICENSE)
